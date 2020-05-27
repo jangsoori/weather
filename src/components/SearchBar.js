@@ -17,7 +17,7 @@ export class SearchBar extends Component {
         return 1;
       }
     });
-    return list.length < 10
+    return list.length < 20
       ? list.map((city) => {
           return (
             <div

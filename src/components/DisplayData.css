@@ -37,6 +37,26 @@
   border-radius: 50px;
 }
 
+@media only screen and (max-height: 700px) {
+  .weather-name {
+    font-size: 2rem;
+  }
+
+  .weather-img {
+    font-size: 6rem;
+  }
+  .weather-temp {
+    font-size: 4rem;
+  }
+
+  .weather-temp .real-temp {
+    font-size: 1.6rem;
+  }
+  .detailed-info {
+    font-size: 1.6rem;
+  }
+}
+
 @media only screen and (min-width: 700px) {
   .weather-name {
     font-size: 6rem;
