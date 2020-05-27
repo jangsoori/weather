@@ -20,6 +20,15 @@
   transition: border-color 0.2s;
 }
 
+@media only screen and (min-width: 500px) {
+  .search-wrapper {
+    width: 30rem;
+    justify-self: start;
+  }
+  .search-input {
+  }
+}
+
 .suggestions {
   color: white;
   cursor: pointer;

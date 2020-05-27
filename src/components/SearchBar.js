@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./SearchBar.css";
 
 export class SearchBar extends Component {
-  state = { query: "", focused: false };
+  state = { query: "" };
 
   onInputChange = (e) => {
     this.setState({ query: e.target.value }, () => {
@@ -11,6 +11,12 @@ export class SearchBar extends Component {
   };
 
   renderSuggestions = (list) => {
+    //Sort suggesdtions alphabetically (city name)
+    list.sort((a, b) => {
+      if (a.name > b.name) {
+        return 1;
+      }
+    });
     return list.length < 10
       ? list.map((city) => {
           return (
@@ -30,8 +36,6 @@ export class SearchBar extends Component {
   };
 
   render() {
-    console.log(this.state);
-
     return (
       <React.Fragment>
         <div className="search-wrapper">
@@ -41,12 +45,19 @@ export class SearchBar extends Component {
             onChange={this.onInputChange}
             className="search-input awesomplete"
             onFocus={() => {
-              this.setState({
-                focused: true,
-              });
+              this.setState(
+                {
+                  focused: true,
+                },
+                () => {
+                  this.props.checkFocus(this.state.focused);
+                }
+              );
             }}
             onBlur={(e) => {
-              this.setState({ query: "", focused: false });
+              this.setState({ query: "", focused: false }, () => {
+                this.props.checkFocus(this.state.focused);
+              });
               e.target.value = "";
               this.props.onBlur();
             }}

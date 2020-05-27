@@ -34,12 +34,21 @@ export class DisplayData extends Component {
         </div>
 
         <div className="weather-img">{icon}</div>
-        <div className="weather-temp">
-          <span> {Math.round(main.temp)}°C</span>
-          <span className="real-temp">
-            Real feel: {main.feels_like.toFixed(1)}°C
-          </span>
-        </div>
+        {this.props.units === "metric" ? (
+          <div className="weather-temp">
+            <span> {Math.round(main.temp)}°C</span>
+            <span className="real-temp">
+              Real feel: {main.feels_like.toFixed(1)}°C
+            </span>
+          </div>
+        ) : (
+          <div className="weather-temp">
+            <span> {Math.round(cToF(main.temp))}°F</span>
+            <span className="real-temp">
+              Real feel: {cToF(main.feels_like).toFixed(1)}°F
+            </span>
+          </div>
+        )}
 
         <div className="detailed-info">
           <span className="weather-description">
@@ -55,3 +64,8 @@ export class DisplayData extends Component {
 }
 
 export default DisplayData;
+
+function cToF(celsius) {
+  const cTemp = celsius;
+  return (cTemp * 9) / 5 + 32;
+}

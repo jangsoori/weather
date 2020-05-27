@@ -32,4 +32,32 @@
   grid-template-rows: repeat(3, 1fr);
   gap: 1rem;
   font-size: 2rem;
+  border: 1px solid white;
+  padding: 4rem;
+  border-radius: 50px;
+}
+
+@media only screen and (min-width: 700px) {
+  .weather-name {
+    font-size: 6rem;
+  }
+
+  .weather-img {
+    font-size: 12rem;
+  }
+  .weather-temp {
+    font-size: 8rem;
+  }
+
+  .weather-temp .real-temp {
+    font-size: 2rem;
+  }
+  .detailed-info {
+    font-size: 2rem;
+  }
+  .button {
+    position: absolute;
+    top: 4rem;
+    right: 2rem;
+  }
 }

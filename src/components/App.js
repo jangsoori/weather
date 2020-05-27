@@ -3,6 +3,7 @@ import SearchBar from "./SearchBar";
 import "./App.css";
 import DisplayData from "./DisplayData";
 import Axios from "axios";
+import UnitSwitch from "./UnitSwitch";
 
 //TODO: Search by country.
 
@@ -74,7 +75,6 @@ export class App extends React.Component {
     this.setState({ currentID: id }, () => {
       this.fetchWeather(this.state.currentID);
     });
-    console.log(id);
   };
 
   //Fetch weather with geographical ID
@@ -91,10 +91,40 @@ export class App extends React.Component {
   clearSuggestions = () => {
     this.setState({ filteredList: [] });
   };
+
+  //Get units
+  getUnit = (e) => {
+    if (e.target.checked) {
+      this.setState({ system: "imperial" });
+    } else {
+      this.setState({ system: "metric" });
+    }
+  };
+
+  checkSearchFocus = (status) => {
+    this.setState({ searchFocus: status });
+  };
+
   render() {
+    console.log(this.state.searchFocus);
+
     return (
       <div className="app">
-        <div className="dim-bg"></div>
+        {this.state.searchFocus ? (
+          <div
+            className="dim-bg"
+            style={{
+              opacity: "1",
+            }}
+          ></div>
+        ) : (
+          <div
+            className="dim-bg"
+            style={{
+              animation: "fadeOut 0.5s",
+            }}
+          ></div>
+        )}
 
         <div className="search-container ">
           <SearchBar
@@ -103,11 +133,12 @@ export class App extends React.Component {
             suggestions={this.state.filteredList}
             getSuggestionId={this.getSuggestionId}
             onBlur={this.clearSuggestions}
+            checkFocus={this.checkSearchFocus}
           />
         </div>
 
-        {/* Put cityData into prop from state after fetching */}
-        <DisplayData cityData={this.state.cityData} />
+        <DisplayData cityData={this.state.cityData} units={this.state.system} />
+        <UnitSwitch onChange={this.getUnit} />
       </div>
     );
   }
