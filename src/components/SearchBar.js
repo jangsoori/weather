@@ -22,11 +22,8 @@ export class SearchBar extends Component {
           return (
             <div
               className="suggestion"
-              id={city.geonameid}
-              onMouseDown={this.props.getSuggestionId.bind(
-                this,
-                city.geonameid
-              )}
+              id={city.id}
+              onMouseDown={this.props.getSuggestionId.bind(this, city.id)}
             >
               {city.name}, {city.country}
             </div>

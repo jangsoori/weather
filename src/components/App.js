@@ -20,7 +20,7 @@ export class App extends React.Component {
   };
 
   getCities = () => {
-    Axios.get(`./cities.json`).then((res) => {
+    Axios.get(`./current.city.list.json`).then((res) => {
       this.setState({ cityList: res.data });
     });
   };
@@ -44,15 +44,15 @@ export class App extends React.Component {
   };
 
   //Get country ID
-  getID = (cityName, countryName) => {
-    let filtered = this.state.cityList.filter((city) => {
-      if (city.name === cityName && city.country === countryName) {
-        return city;
-      }
-    });
+  // getID = (cityName, countryName) => {
+  //   let filtered = this.state.cityList.filter((city) => {
+  //     if (city.name === cityName && city.country === countryName) {
+  //       return city;
+  //     }
+  //   });
 
-    return filtered[0].geonameid;
-  };
+  //   return filtered[0].geonameid;
+  // };
 
   //On load, get list of all cities and user's location
   componentDidMount() {
