@@ -1,8 +1,3 @@
-* {
-  user-select: none;
-  -webkit-tap-highlight-color: transparent;
-}
-
 *:focus {
   outline: none;
 }
@@ -19,11 +14,12 @@
 
 .button {
   position: relative;
-
   width: 74px;
   height: 36px;
-  margin: -20px auto 0 auto;
+  margin: 0 auto 0 auto;
   overflow: hidden;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .button.r,
@@ -58,7 +54,7 @@
 }
 
 #button-1 .knobs:before {
-  content: "C";
+  content: "°C";
   position: absolute;
   top: 4px;
   left: 4px;
@@ -76,7 +72,7 @@
 }
 
 #button-1 .checkbox:checked + .knobs:before {
-  content: "F";
+  content: "°F";
   left: 42px;
   background-color: #f44336;
 }
@@ -89,12 +85,4 @@
 #button-1 .knobs:before,
 #button-1 .layer {
   transition: 0.3s ease all;
-}
-
-@media only screen and (min-width: 700px) {
-  .button {
-    position: absolute;
-    top: 4.5rem;
-    right: 2rem;
-  }
 }

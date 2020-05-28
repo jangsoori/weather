@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./SearchBar.css";
 
 export class SearchBar extends Component {
-  state = { query: "" };
+  state = { query: "", focused: false };
 
   onInputChange = (e) => {
     this.setState({ query: e.target.value }, () => {
@@ -63,7 +63,14 @@ export class SearchBar extends Component {
             <i className="fas fa-search"></i>
           </button> */}
         </div>
-        <div className="suggestions">
+        <div
+          className="suggestions"
+          style={
+            this.state.focused && this.props.suggestions.length > 1
+              ? { maxHeight: "30rem" }
+              : null
+          }
+        >
           {this.state.focused
             ? this.renderSuggestions(this.props.suggestions)
             : null}

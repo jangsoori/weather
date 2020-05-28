@@ -114,7 +114,7 @@ export class App extends React.Component {
           <div
             className="dim-bg"
             style={{
-              opacity: "1",
+              animation: "fadeIn .5s forwards",
             }}
           ></div>
         ) : (

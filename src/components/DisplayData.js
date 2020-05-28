@@ -13,6 +13,7 @@ const icon_config = {
   Clouds: { icon: <i className="fas fa-cloud"></i> },
 
   Mist: { icon: <i className="fas fa-smog"></i> },
+  Haze: { icon: <i className="fas fa-smog"></i> },
   // cloudsun: <i class="fas fa-cloud-sun"></i>,
 };
 
